@@ -113,9 +113,9 @@ namespace Photonizer.CLI
 
                 //if (Run == false)
                 //break;
-                string Year = Input[i].CreationTime.Year + "";
-                string Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Input[i].CreationTime.Month);
-                string Day = Input[i].CreationTime.Day + "";
+                string Year = Input[i].LastWriteTime.Year + "";
+                string Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Input[i].LastWriteTime.Month);
+                string Day = Input[i].LastWriteTime.Day + "";
 
                 CreateFolder(Output + "\\" + Year);
                 CreateFolder(Output + "\\" + Year + "\\" + Month);
@@ -126,8 +126,8 @@ namespace Photonizer.CLI
                 {
                     if (IsCopy == true)
                     {
-                        if (File.Exists(Output + "\\" + Year + "\\" + Month + "\\" + Day + "\\" + Year + "." + Input[i].CreationTime.Month + "." + Day + " (" + Input[i].Name.Replace(Input[i].Extension, "") + ")" + Input[i].Extension) == false)
-                            File.Copy(Input[i].FullName, Output + "\\" + Year + "\\" + Month + "\\" + Day + "\\" + Year + "." + Input[i].CreationTime.Month + "." + Day + " (" + Input[i].Name.Replace(Input[i].Extension, "") + ")" + Input[i].Extension);
+                        if (File.Exists(Output + "\\" + Year + "\\" + Month + "\\" + Day + "\\" + Year + "." + Input[i].LastWriteTime.Month + "." + Day + " (" + Input[i].Name.Replace(Input[i].Extension, "") + ")" + Input[i].Extension) == false)
+                            File.Copy(Input[i].FullName, Output + "\\" + Year + "\\" + Month + "\\" + Day + "\\" + Year + "." + Input[i].LastWriteTime.Month + "." + Day + " (" + Input[i].Name.Replace(Input[i].Extension, "") + ")" + Input[i].Extension);
                         Log = "Copying: " + i + "/" + Input.Count;
                     }
                     else
